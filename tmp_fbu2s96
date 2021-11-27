@@ -1,0 +1,49 @@
+def ml_module(petal_length, petal_width, sepal_length, sepal_width):
+    import pandas as pd
+    import numpy as np
+    import os
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import warnings
+    
+    warnings.filterwarnings('ignore')
+    
+    df = pd.read_excel(r"C:\Users\Test\Documents\Machine Learning\Datensätze\iris\Iris.xlsx")
+    df.head()
+    
+    from sklearn.preprocessing import LabelEncoder
+    le = LabelEncoder()
+    df['Species'] = le.fit_transform(df['Species'])
+    df.head()
+    
+    from sklearn.model_selection import train_test_split
+    X = df.drop(columns=['Species'])
+    Y = df['Species']
+    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.30)
+    
+    # logistic regression 
+    from sklearn.linear_model import LogisticRegression
+    classifier = LogisticRegression()
+    
+    # model training
+    model.fit(x_train, y_train)
+    
+    # print metric to get performance
+    #print("Accuracy: ",model.score(x_test, y_test) * 100)
+    
+    
+    
+    
+    array = ([[petal_length, petal_width, sepal_length, sepal_width]])
+    proba = classifier.predict_proba(array).max()
+    clas = classifier.predict(array)
+    return proba
+    return clas
+
+    
+
+    
+    
+    
+    
+    

@@ -1,0 +1,23 @@
+from flask import Flask, redirect, url_for, render_template, request, redirect, session, flash
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+import smtplib
+import os
+from datetime import timedelta, datetime
+import sqlite3
+import pandas as pd
+
+
+app = Flask(__name__)
+
+#Create Secret Key
+app.config['SECRET_KEY']="retggrre1"
+
+class FlowerForm(FlaskForm):
+    petal_length = DecimalField("Petal length", validators =[DataRequired()])
+    petal_width = DecimalField("Petal widht", validators =[DataRequired()])
+    petal_length = DecimalField("Sepal length", validators =[DataRequired()])
+    petal_width = DecimalField("Sepal widht", validators =[DataRequired()])
+    submit = SubmitField("Submit")
